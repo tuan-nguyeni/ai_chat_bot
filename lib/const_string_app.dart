@@ -5,6 +5,8 @@ class TextLabelStrings {
 }class ChatStrings {
   static const String senderName = "user";
   static const String botName = "Tuan Bot";
+  static const String botAnswer = botName + "loves your question <3 Here is "
+      "the answer:";
 }
 
 

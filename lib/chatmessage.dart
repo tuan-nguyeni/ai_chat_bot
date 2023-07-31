@@ -1,3 +1,4 @@
+import 'package:chat_gpt_02/const_string_app.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -22,7 +23,7 @@ class ChatMessage extends StatelessWidget {
             .subtitle1(context)
             .make()
             .box
-            .color(sender == "user" ? Vx.red200 : Vx.green200)
+            .color(sender == ChatStrings.senderName ? Vx.red200 : Vx.green200)
             .p16
             .rounded
             .alignCenter

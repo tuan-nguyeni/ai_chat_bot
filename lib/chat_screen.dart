@@ -1,4 +1,4 @@
-import 'package:chat_gpt_02/string_app.dart';
+import 'package:chat_gpt_02/const_string_app.dart';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -59,14 +59,16 @@ class _ChatScreenState extends State<ChatScreen> {
 
       final response = await chatGPT!.generateImage(request);
       Vx.log(response!.data!.last!.url!);
+      insertNewData("Download image here:", isImage: false);
+      insertNewData(response.data!.last!.url!, isImage: false);
       insertNewData(response.data!.last!.url!, isImage: true);
     } else {
       final request =
           CompleteText(prompt: message.text, model: kTranslateModelV3);
 
       final response = await chatGPT!.onCompleteText(request: request);
-      Vx.log(response!.choices[0].text);
-      insertNewData(response.choices[0].text, isImage: false);
+      Vx.log( response!.choices[0].text);
+      insertNewData(ChatStrings.botAnswer + response.choices[0].text, isImage: false);
     }
   }
 
