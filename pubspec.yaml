@@ -33,10 +33,13 @@ dependencies:
     git:
       url: https://github.com/iampawan/Flutter-ChatGPT.git
   cupertino_icons: ^1.0.2
+  firebase_auth: ^4.7.2
+  firebase_core: ^2.15.0
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
   velocity_x: ^3.6.0
+  firebase_analytics: ^10.4.4
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to

@@ -1,5 +1,6 @@
 import 'package:chat_gpt_02/const_string_app.dart';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -21,6 +22,8 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isImageSearch = false;
 
   bool _isTyping = false;
+
+  final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   @override
   void initState() {
@@ -70,6 +73,14 @@ class _ChatScreenState extends State<ChatScreen> {
       Vx.log( response!.choices[0].text);
       insertNewData(ChatStrings.botAnswer + response.choices[0].text, isImage: false);
     }
+
+    analytics.setAnalyticsCollectionEnabled(true);
+    analytics.logEvent(
+        name: 'chatgpt_message_sent',
+        parameters: <String, dynamic>{
+          'counter_value': message.text,
+        }
+    );
   }
 
   void insertNewData(String response, {bool isImage = false}) {
